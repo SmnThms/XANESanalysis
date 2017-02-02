@@ -41,24 +41,28 @@ class Scan:
         
 class Set_of:
     def __init__(self,name_of_scan,type_of_scan):
-        nb = {'Al':5,'Al2':5}
+        nb = {'Al':5,'Alrp':5}
+        self.name = name_of_scan
         self.scans = [Scan(name_of_scan,type_of_scan,number_of_scan) for number_of_scan in range(nb[name_of_scan])]
+        self.scaling()
         
     def scaling(self):
         for scan in self.scans:
-            reference = 0
-            coefs = np.arange(10000)*2/10000
+            reference, coefs = 0, np.arange(10000)*2/10000
             diff = [np.sum(abs(coef*scan.photocurrent - self.scans[reference].photocurrent)) for coef in coefs]
             scan.photocurrent *= coefs[np.argmin(diff)]
         
-#def plot_XANES(set_of_scans, format_of_figure):
-#    figure = plt.plot()
-#    if format_of_figure is 'big':
-#        
-#    elif format_of_figure is 'small':
-#        
-#    print 'Name, type, parameters of the scan'
-#    return figure
+def plot_XANES(set_of_scans, format_of_figure):
+    figure = plt.figure(1)
+    if format_of_figure is 'big':
+        for scan in set_of_scans.scans:
+            plt.plot(scan.energy,scan.photocurrent)
+    elif format_of_figure is 'small':
+        selection = {'Al':[0,2,3]}
+        for scan in set_of_scans.scans[selection[set_of_scans.name]]:
+            plt.plot(scan.energy,scan.photocurrent)
+    print 'Name, type, parameters of the scan'
+    return figure
     
 ##def plot_QE():
 ##    
@@ -71,5 +75,7 @@ class Set_of:
 ##def plot_fit():
 
 s = Scan('AlLirp','XANES',0)
+S = Set_of('Alrp','XANES')
+plot_XANES(S,'big')
 #plt.plot(s.time,s.QE)
-plt.plot(s.energy,s.photocurrent)
+#plt.plot(s.energy,s.photocurrent)
