@@ -1,0 +1,369 @@
+%% ****** Start of file aiptemplate.tex ****** %
+%%
+%%   This file is part of the files in the distribution of AIP substyles for REVTeX4.
+%%   Version 4.1 of 9 October 2009.
+%%
+%
+% This is a template for producing documents for use with 
+% the REVTEX 4.1 document class and the AIP substyles.
+% 
+% Copy this file to another name and then work on that file.
+% That way, you always have this original template file to use.
+
+\documentclass[aip,graphicx]{revtex4-1}
+%\documentclass[aip,reprint]{revtex4-1}
+
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{siunitx}
+%\usepackage[pdftex]{graphicx}
+%\usepackage{babel}
+%\usepackage{multicol}
+%\usepackage[centerlast]{caption2}
+\usepackage{setspace}
+\usepackage{multirow}
+\usepackage{epstopdf}
+
+%\draft % marks overfull lines with a black rule on the right
+
+%\newcommand{\registered}{\circledR}
+
+%\journalname{JVSTA or Applied Physics A}
+
+\begin{document}
+
+% Use the \preprint command to place your local institutional report number 
+% on the title page in preprint mode.
+% Multiple \preprint commands are allowed.
+%\preprint{}
+
+\title{Ageing from technical metal photocathodes under UV laser irradiation: a chemistry investigation} %Title of paper
+
+% repeat the \author .. \affiliation  etc. as needed
+% \email, \thanks, \homepage, \altaffiliation all apply to the current author.
+% Explanatory text should go in the []'s, 
+% actual e-mail address or url should go in the {}'s for \email and \homepage.
+% Please use the appropriate macro for the type of information
+
+% \affiliation command applies to all authors since the last \affiliation command. 
+% The \affiliation command should follow the other information.
+
+\author{S. Thomas}
+\affiliation{MINES ParisTech, 75006 Paris, France}
+\author{C. J. Milne}
+\affiliation{Paul Scherrer Institute, 5323 Villigen, Switzerland}
+\author{T. Huthwelker}
+\affiliation{\'Ecole Polytechnique F\'ed\'rale de Lausanne, 1015 Lausanne, Switzerland}
+\author{F. Ardana-Lamas}
+\affiliation{Paul Scherrer Institute, 5323 Villigen, Switzerland}
+\affiliation{\'Ecole Polytechnique F\'ed\'erale de Lausanne, 1015 Lausanne, Switzerland}
+\author{C. Vicario}
+\affiliation{Paul Scherrer Institute, 5323 Villigen, Switzerland}
+\author{C. P. Hauri}
+\affiliation{Paul Scherrer Institute, 5323 Villigen, Switzerland}
+\affiliation{\'Ecole Polytechnique F\'ed\'rale de Lausanne, 1015 Lausanne, Switzerland}
+\author{C. Bressler}
+\author{F. Le Pimpec}
+\affiliation{European XFEL GmbH 22761 Hamburg, Germany}
+\email[Corresponding author: ]{frederic.le.pimpec@xfel.eu}
+
+% Collaboration name, if desired (requires use of superscriptaddress option in \documentclass). 
+% \noaffiliation is required (may also be used with the \author command).
+%\collaboration{}
+%\noaffiliation
+
+\date{\today}
+
+\begin{abstract}
+% insert abstract here
+Hard and soft X-ray Free Electron Laser use, for almost all of them, a metal based photocathode (copper) or a semiconductor cathode (cesium telluride) as an electron source. One of the challenge is to operate the linear accelerator with a reliable cathode in order to ensure the maximum uptime for users. Those cathodes should deliver a low emittance beam and have a high quantum efficiency (QE) to reduce the energy requirement of the RF photoelectron gun laser. With usage in the RF gun the QE performances of the cathodes degrades and one need to rejuvenate them or replace them. We have tried to understand the chemistry evolution of various photocathodes such as Aluminium, Magnesium and Aluminium-Lithium either polished and stored and freshly polished using XANES techniques. The results of the UV laser irradiation over time and its chemistry correlation are presented.
+\end{abstract}
+
+\pacs{85.60.Ha, 79.60.-i, 61.05.cj, 29.27.-a}% insert suggested PACS numbers in braces on next line
+
+\maketitle %\maketitle must follow title, authors, abstract and \pacs
+
+% Body of paper goes here. Use proper sectioning commands. 
+% References should be done using the \cite, \ref, and \label commands
+\section{Introduction}
+
+In a free electron laser accelerator (FEL) one of the key components is the electron source. The source should provide a sufficient amount of electrons and should have a low emittance to enable the facility to provide the x-ray photons requested by the end users. The amount of charge produced by the photocathode depends on its quantum efficiency (QE), which is defined as the number of electrons emitted per number of incident photons.
+
+Unfortunately photocathodes' quantum efficiency (QE) (metals or semiconductor) degrade over time when being operated in radio frequency guns \cite{Lecce:2011,lepimpec:2013}. This degradation requires rejuvenation of the cathode by means of laser cleaning or using ozone \cite{Trovo:Lecce2011} in the case of metallic photocathodes and by usually re-cesiating the surface of most of semiconductor cathodes. During that time, if no second gun is present, the accelerator, in general a 4$^{th}$ generation light source like SwissFEL, is not available for user beam time. These procedures are unfortunately not capable of returning the QE to 100\% of the initial value, and with time, it becomes necessary to exchange the cathode.
+This degradation is usually attributed to poor vacuum. We have shown that an unbaked vacuum does not degrade the QE while the cathode is irradiated by UV light from a laser \cite{lepimpec:2013}. Likewise, ozone rejuvenation is performed by injecting oxygen and in presence of UV light. In both cases the vacuum pressure is at least of an order of magnitude above the operating conditions of an RF photoelectron gun. The photocathode cleaning with UV-excited ozone likely creates an oxidized layer on the metal surface.
+We have investigated the correlation between the evolution of the QE and the associated chemistry at the surface of metallic photocathodes like Mg, Al and AlLi, for polished and stored cathodes as well as freshly polished photocathodes. We have used the Swiss Light Source (SLS) beamline Phoenix \cite{PHOENIX:SLS} and its capacity of measuring  x-ray absorption near edge structure (XANES) spectrum to follow the chemistry at the surface of the photocathodes. The study was carried out in non baked vacuum below 10$^{-7}$~Torr while irradiated by a high repetition rate UV laser (200~kHz, 266~nm) and in absence of RF field.
+%\label{}
+
+
+\section{Experimental setup}
+
+The experiment described and discussed in this paper, carried out at the \textsc{Phoenix} beamline of the Swiss Light Source, was conducted as follows: three photocathodes made of different technical metals (aluminium, an aluminium-lithium alloy, and magnesium) were investigated, by measuring their quantum efficiency under UV irradiation and regularly probing their state through XANES spectroscopy. 
+
+\subsubsection*{QE scans}
+Inside a vacuum chamber, the three photocathodes (Al, AlLi and Mg) were fixed to a cupper plate (see fig. \ref{setup}) and alternatively placed so as to face a pulsed UV beam, produced by a Nd:YVO$_4$ Duetto\textsuperscript{\textregistered} laser \cite{Timebandwidth}. This linearly polarized beam had a wavelength of 266~nm, a repetition rate of 200~kHz and a pulse duration of 10~ps. The typical spot diameter on the photocathodes was 8~mm. The laser power was varied during the experiment, over a range from 3~mW to 108~mW (values measured in the chamber), to modulate the quantity of electrons emitted.
+
+The work functions of the considered metals (4.08~eV for Al and 3.68~eV for Mg\ref{}) are weaker than the energy delivered by the UV photons (4.66~eV). The UV irradiation thus induced photoemission, and the current leaving the copper plate carrying the photocathodes was monitored by a Keithley\textsuperscript{\textregistered} 6514 Ammeter. This current is thereafter denoted as the Total Electron Yield (TEY).
+
+\begin{figure}
+\includegraphics[width=10cm]{schema.png}%
+\caption{Experimental setup\label{setup}}%
+\end{figure}
+
+\subsubsection*{XANES scans}
+After ten minutes of UV irradiation of a photocathode, the laser beam was shut down and the x-ray beam was cast upon the same point that the laser lightened (the photocathodes were not exposed to the x-rays and the UV simultaneously). A XANES spectrum was then recorded, during a few minutes, by varying the energy of the x-rays around the K-edge of the main metal constituting the investigated photocathode, and measuring the corresponding Total Electron Yield. The intensity of the x-ray beam was kept low (the photoemission from the photocathode did not exceed $1.5.10^{-10}$~A), so as to affect the metal structure or chemistry as weakly as possible. A nickel-coated PET foil was used to monitor this intensity, which can change with the energy of the beam; when crossing the foil, the beam caused photoemission, measured by the current $I_0$. 
+
+Immediately after the XANES scan, another ten-minute period of UV irradiation (referred in the following as a QE scan) was performed, again followed by a XANES scan -- and so forth. This two-step sequence was repeated a certain number of times, leading to the constitution of a particular set of scans; whereupon another photocathode was placed in front of the beams and another set of scans was recorded. 
+
+Table \ref{summary} summarizes the different sets of scans acquired: after the investigation of each photocathode and a re-investigation of the Al photocathode six hours after the first one, the three photocathode were repolished and studied once again with the same procedure. The Al photocathode was also re-investigated, this time after thirty minutes of uninterrupted x-ray irradiation of the photocathode. Both re-investigations of the Al photocathode probed the same area of the surface as what was previously done. 
+
+\begin{table}
+\caption{The different sets of scans recorded\label{summary}}
+\begin{tabular}{l|c|c|c}
+Photocathode & Number of scans & Laser power & Bias of the nickel foil \\ \hline \hline
+as-received Mg & 10 & 35 mW & 0 V \\ \hline
+as-received AlLi & 10 & from 35 to 98 mW & 0 V \\ \hline
+as-received Al & 15 & 35 mw & 0 V \\ \hline
+as-received Al & \multirow{2}*{5} & \multirow{2}*{35 mW} & \multirow{2}*{0 V} \\ 
+after 6 h without irradiation & & & \\ \hline
+repolished Mg & 10 & from 18 to 98 mW & +5 V \\ \hline
+repolished AlLi & 8 & 98 mW & +5 V \\ \hline
+repolished Al & 9 & 3 mW & +5 V \\ \hline
+repolished  Al & \multirow{2}*{5} & \multirow{2}*{35 mW} & \multirow{2}*{+5 V} \\ 
+after 30 min of x-ray irradiation & & & \\ 
+\end{tabular}
+\end{table}
+
+\subsubsection*{Additional measures}
+The nickel foil measuring the intensity of the x-ray beam was also used as an electron collector: a part of the photoelectrons emitted by the photocathode during QE scans could indeed reach the nickel foil, and the $I_0$ current measured from the foil reproduces -- although lessened -- the Total Electron Yield of the photocathode. This nickel foil was biased by 5V during the scans involving the repolished photocathodes, generating an electric field favoring the extraction of electrons from the photocathode; when biased, the nickel foil could still be used as a second QE gauge.
+
+Our photocathodes being thick and substancially pure, no worthwhile XANES signal can be observed from their Total Fluorescence Yield, due to self-absorption\ref{}. A Roentec\textsuperscript{\textregistered} fluorescence detector was however placed in the chamber, as an additional indicator of a potential shift in the recorded spectra -- it did not prove useful.
+[figure showing TFY spectra ?]
+
+\subsubsection*{Vacuum chamber}
+Finally, the temperature, the pressure and the composition of the vacuum were monitored by a [], a compact cold cathode gauge and a mass spectrometer, respectively. The temperature of the copper plate holding the photocathodes varied between 18 and 10$^\circ$C, due to the variable liquid nitrogen filling of two cold traps placed near; the ten-minute UV irradiation of a photocathode only changed the measured temperature by less than 0.5$^\circ$C. The pressure was always kept under $2\times10^{-6}$~mbar, pumped by a []~l/s turbo pump; depending on the filling of the cold traps, the pressure slightly increased during the recording of some sets of scans, and regularly decreased the rest of the time. The vacuum was not baked, and a Residual Gas Analysis revealed a contamination by dimethylformamide (DMF: (CH$_3$)$_2$NC(O)H, 73~uma), originating from the experiment previously carried out in the vacuum chamber. [The vacuum was dominated by N$_2$ (or CO), water, and O$_2$.]
+
+\section{Results}
+
+The measurements recorded during the experiment are presented, in this section, in the form of normalized QE curves and XANES spectra. Their validity, as well as the correlations that can be brought out, are discussed.
+
+\subsection{Quantum efficiency}
+
+The quantum efficiency (QE) of the photocathode was estimated as follows, where e is the charge of an electron and $\nu$ the frequency of the laser :
+
+\begin{equation}
+QE = \frac{\mbox{average number of electrons produced per second}}{\mbox{average number of incoming photons per second}} = \frac{\frac{\mbox{TEY (A)}}{e}}{\frac{\mbox{laser power (W)}}{h\nu}}
+\end{equation}
+
+The successive QE scans of each set of scans are presented juxtaposed fig. \ref{QE_1} to \ref{QE_8} (the intermediate XANES scans are not displayed). Each scan shows a similar pattern: a decrease of the QE by 50 to 70~\%, starting from the end of the XANES scan that immediately preceded it. The repolished AlLi photocathode is an exception, marking a unique increase of the QE during a scan. Of the order of $10^{-8}$ for the Al photocathode (and $10^{-7}$ for its re-investigation after its repolishing), the QE is lower for the AlLi photocathode: $10^{-9}$ and $10^{-10}$ respectively before and after its repolishing. Such low values are not surprising, but result from how the QE is estimated: the measured photocurrent and UV power are time averages, while the laser beam is pulsed.
+
+\begin{figure}
+\includegraphics[width=16cm]{QE_Mg.eps}%
+\caption{Quantum Efficiency of the as-received Mg photocathode; XANES spectroscopy (not shown) is performed between each section of the curve.\label{QE_1}}%
+\end{figure}
+
+\begin{figure}
+\includegraphics[width=16cm]{QE_AlLi.eps}%
+\caption{Quantum Efficiency of the as-received AlLi photocathode.}%
+\end{figure}
+
+\begin{figure}
+\includegraphics[width=16cm]{QE_Al1.eps}%
+\caption{Quantum Efficiency of the as-received Al photocathode under UV irradiation.}%
+\end{figure}
+
+\begin{figure}
+\includegraphics[width=16cm]{QE_Al2.eps}%
+\caption{Quantum Efficiency of the as-received Al photocathode, re-investigated after a six-hour long interruption of irradiation.}%
+\end{figure}
+
+\begin{figure}
+\includegraphics[width=16cm]{QE_MgNP.eps}%
+\caption{Quantum Efficiency of the repolished Mg photocathode.}%
+\end{figure}
+
+\begin{figure}
+\includegraphics[width=16cm]{QE_AlLiNP.eps}%
+\caption{Quantum Efficiency of the repolished AlLi photocathode.}%
+\end{figure}
+
+\begin{figure}
+\includegraphics[width=16cm]{QE_AlNP1.eps}%
+\caption{Quantum Efficiency of the repolished Al photocathode.}%
+\end{figure}
+
+\begin{figure}
+\includegraphics[width=16cm]{QE_AlNP2.eps}%
+\caption{Quantum Efficiency of the repolished Al photocathode,re-investigated after thirty minutes of x-ray irradiation.\label{QE_8}}%
+\end{figure}
+
+\subsubsection*{Perturbation sources}
+Intense fluctuations affect the two sets of scans corresponding to the Mg photocathode, as well as certain scans of the as-received Al photocathode: it is unclear whether these fluctuations are due to mechanical vibrations of the experimental chamber (leading the laser beam to partially illuminate a new part of the photocathode), or to another source of instability. One can notice that such fluctuations do not appear when the laser intensity is low (for example during the first scans of the repolished Mg photocathode). The ammeter measuring the TEY is not responsible for the fluctuations : they are indeed faithfully reproduced by the second recording of the QE provided by the nickel foil.
+
+Depending on the laser intensity, the TEY current from which the QE is calculated varies from $4\times10^{-12}$ to $3\times10^{-9}$ A; this corresponds to a number of electrons emitted per laser pulse that ranges from a few hundreds to several tens of thousands. When this number is the lowest, namely for the as-received AlLi photocathode, only a few electrons reach the nickel foil, enabling it to show the photoemission caused on the nickel foil by the reflected and strayed UV beam. While nickel is highly sensitive to UV light\ref{}, and despite the high laser intensity used in that case, such a photoemission is weak -- less than a few tens of electrons are thereby emitted per laser pulse, as indicated by $I_0$ -- supporting the hypothesis that the detected photoelectrons can be considered as only coming from the photocathodes.
+
+When the number of electrons reaching the nickel foil is sufficient, the $I_0$ current (or, more precisely, its opposite, for the nickel foil receives the electrons that the photocathode emits) is in very close agreement with the TEY. Two cases make exception: the QE scans of the repolished AlLi photocathode and the re-investigation of the repolished Al photocathode exhibit a puzzling divergence, with the photocathode producing less and less electrons while the nickel foil receives more and more of them [-- discussions on this issue are deferred to the end of the article.]
+
+\subsubsection*{Change in parameters}
+Certain scans were recorded under specific conditions, enabling the study of their influence. The six-hour pause, during which the as-received Al photocathode was kept under vacuum in the chamber without direct UV nor x-ray irradiation, left the QE unchanged, despite the pressure decrease. Likewise, the QE proved independent from the laser power, as shown by the as-received AlLi photocathode for which the scans were performed with three different laser powers. Finally, the effect on the QE of the repolishing of the photocathodes and of the presence of the electric field generated by the biased nickel foil could not be identified, as both overlapped. 
+[Several longer QE scans (30 min) were also performed, only to show the continuation of the QE decrease during a scan.]
+
+\subsection{XANES spectroscopy}
+
+Element specific, XANES spectroscopy can reveal the changes in electronic configuration and close chemical environment that the metal atoms of the photocathodes undergo throughout a set of scans. Such changes manifest themselves through height modulation and shift of peaks on the XANES spectra: for this reason, the spectra of each set of XANES scans were gathered, normalized and scaled so that they overlap at best, highlighting potential relative changes in shape from one spectrum to another. 
+
+The normalization consisted in two steps: 
+\begin{itemize}
+\itemsep0em 
+\item a normalization to the intensity of the x-ray beam, which is not independent of its energy. This was performed by means of a division by $I_0$ (or by the corresponding unbiased $I_0$ for the scans recorded with a biased nickel foil);
+\item a linear correction, by substracting to each entire spectrum a linear function so that the signal before the edge remains constant and equal to zero. This normalization erases the variation of the photocurrent that is due to previous edges.
+\end{itemize}
+The scaling was made by multiplying each spectrum by a constant that minimizes the area between the considered spectrum and another one of the same set taken as a reference. 
+That process leads for instance to the set of spectra presented fig. \ref{XANES_example} for which, as for the following figures, the order of acquisition is preserved: the XANES scans are chronologically sorted.
+This example is actually representative: it can be observed that any important change among one set of XANES scans is a progressive and local change. For this reason, in order to improve the readability of the figures, only three XANES scans have been plotted for each set of scans (fig. \ref{XANES_Mg} to \ref{XANES_Al}), representing a more gradual evolution similar to the one that is visible on fig. \ref{XANES_example}. Because of an absence of changes from one XANES scan to another, the re-investigations of the Al photocathode are not shown.
+
+\begin{figure}
+\includegraphics[width=12cm]{XANES_example.eps}%
+\caption{XANES recorded for the repolished Al photocathode, at the Al K-edge; between two scans, a ten minutes exposure to UV radiation is performed.\label{XANES_example}}%
+\end{figure}
+
+\begin{figure}
+\includegraphics[width=12cm]{XANES_Mg.eps}%
+\caption{XANES recorded for the Mg photocathode before and after its repolishing, at the Mg K-edge; between two scans, a ten minutes exposure to UV radiation is performed. An arbitrary offset is added for legibility.\label{XANES_Mg}}%
+\end{figure}
+
+\begin{figure}
+\includegraphics[width=12cm]{XANES_AlLi.eps}%
+\caption{XANES recorded for the AlLi photocathode before and after its repolishing, at the Al K-edge; between two scans, a ten minutes exposure to UV radiation is performed. An arbitrary offset is added for legibility.\label{XANES_AlLi}}%
+\end{figure}
+
+\begin{figure}
+\includegraphics[width=12cm]{XANES_Al.eps}%
+\caption{XANES recorded for the Al photocathode before and after its repolishing, at the Al K-edge; between two scans, a ten minutes exposure to UV radiation is performed. An arbitrary offset is added for legibility.\label{XANES_Al}}%
+\end{figure}
+
+\subsection{Correlations between the QE, the XANES and the pressure}
+
+The second peak (B) of the XANES signal being the major change between to successive scans of the Al and AlLi photocathodes, the height of this peak (normalized to the relatively invariant height of the first peak (A)) was plotted along with the pressure and the quantum efficiency attained at the end of a scan (see fig. \ref{correlation_Al1} to \ref{correlation_AlNP2}). The correlation that appears between these three quantities does not occur for the repolished AlLi set of scans, where the pressure decreases while the QE increases. No correlation could also be examined regarding the Mg photocathode, because of the lack of exploitable QE measurement -- this photocathode is therefore not discussed in the following. Finally, it should be noted that the number of photoelectrons emitted and the variation in the XANES spectra do not correlate.
+
+\begin{figure}
+\includegraphics[width=9cm]{correlation_Al1.eps}%
+\caption{Pressure, Quantum Efficiency and height of the second peak (B) of the XANES spectrum for each scan of the as-received Al photocathode. The QE values corresponding to the scans subject to intense fluctuations are excluded.\label{correlation_Al1}}%
+\end{figure}
+
+\begin{figure}
+\includegraphics[width=9cm]{correlation_Al2.eps}%
+\caption{Pressure, Quantum Efficiency and height of the second peak (B) of the XANES spectrum for each scan of the as-received Al photocathode, re-investigated after a six-hour long interruption of irradiation.\label{correlation_Al2}}%
+\end{figure}
+
+\begin{figure}
+\includegraphics[width=9cm]{correlation_AlLi.eps}%
+\caption{Pressure, Quantum Efficiency and height of the second peak (B) of the XANES spectrum for each scan of the as-received AlLi photocathode.\label{correlation_AlLi}}%
+\end{figure}
+
+\begin{figure}
+\includegraphics[width=9cm]{correlation_AlNP1.eps}%
+\caption{Pressure, Quantum Efficiency and height of the second peak (B) of the XANES spectrum for each scan of the repolished Al photocathode.\label{correlation_AlNP1}}%
+\end{figure}
+
+\begin{figure}
+\includegraphics[width=9cm]{correlation_AlNP2.eps}%
+\caption{Pressure, Quantum Efficiency and height of the second peak (B) of the XANES spectrum for each scan of the repolished Al photocathode, re-investigated after thirty minutes of x-ray irradiation.\label{correlation_AlNP2}}%
+\end{figure}
+
+
+\section{Discussion}
+
+Several hypothesis have been considered to account for the observations described above: the growth of an oxide layer covering the surface of the photocathodes owing to the migration of the electrons emitted, space charge effects limiting the photoemission, a phosphorescence phenomenon retarding the relaxation of x-ray induced transitions, or a combination of adsorption and photoinduced processes affecting the surface chemistry of the photocathodes. Only the latter interpretation shows convincing agreement with most of the experimental data; this section therefrom derives an explanatory model of the evolution in the QE of a Al (or AlLi) photocathode.
+
+\subsection{Evolution over one QE scan}
+
+\subsubsection*{UV driven transition}
+Each QE curve presents a double exponential decay, that can be described with the following notations. Let a photoemission site (potentially an Al atom), in a given chemical environment (E1), have a probability $p_1$ of emitting an electron out of the cathode under UV irradiation. A UV photon can induce a change in this chemical environment -- becoming (E2) -- with a cross-section $\sigma_1$; the photoemission probability is then $p_2$. That is, the proportion $x_1$ of sites in the (E1) state decreases as follows between two close instants $t$ and $t+dt$, with $I$ being the number of photons impinging the photocathode per unit of time and surface:
+\begin{equation}
+x_1(t+dt)=x_1(t)-I\sigma_1x_1(t)dt
+\end{equation}
+The resulting QE is then: QE$=(p_1-p_2)x_1(0)e^{-I\sigma_1t}+c^{te}$, thus exponentially decreasing if $p_2<p_1$. For transitions between other chemical environments are also possible (from a state (E3) to a state (E4) with a transition cross-section $\sigma_3$), a second exponential decay can likewise be implied, and the observed QE decrease apprehended.
+
+\subsubsection*{Fitting of the QE curves}
+This hypothesis, of a linearly photoinduced evolution of the QE, was evaluated by fitting the QE curves with a double exponential model $a_1e^{b_1t}+a_2e^{b_2t}+c$. The results are shown fig. []; the relative statistical disturbance does not exceed []~\%. The $b_1$ and $b_2$ parameter values extracted from the fits appear to be constant for a given power of the laser lighting the photocathode, and to vary linearly with this power, as shown in fig. []. This supports our hypothesis, with transition cross-sections estimated to be: $\sigma_1=[]\pm[]~\mbox{cm}^2$ and $\sigma_3=[]\pm[]~\mbox{cm}^2$. This correspond to transition probabilities (per incoming photon) of [] and [], respectively. 
+
+\subsection{Evolution from one QE scan to the following}
+
+\subsubsection*{Re-adsorption}
+Metal surfaces are known to exhibit strong outgassing of the adsorbed gas layer\ref{} when exposed to synchrotron radiation. During the three minutes duration of the XANES scan performed between two QE scans, the investigated photocathode would thus be expected to lose a certain part of its gas coverage. Once the synchrotron beam is off, substituted by the laser beam, re-adsorption would then occur -- since the desorption cross-sections are for most gases several orders of magnitude lower for UV than for x-rays. The magnitude of this assumed re-adsorption depends on the pressure in the chamber; on the basis of the correlation shown fig. [], the adsorption of certain species is thus thought to be responsible for the changes in chemical environment of the surface Al atoms denoted by the XANES spectra, and for the level of QE at the beginning of each QE scan. The QE variations being cyclic, this adsorption is likely to cause the reverse transition of the above-mentioned, i.e. into the states (E1) and (E3).
+It has to be noted that the variations in XANES from one scan to another, of the order of $1\%$, are consistent with a surface change induced by adsorption: the x-ray radiation probes a depth of a few tens of nanometer, $1\%$ of which corresponds to a few angstr\"{o}ms -- that is, a monolayer of the Al oxide or hydroxide presumably covering the photocathode.
+
+\subsubsection*{Speed of recoverage}
+Under a pressure of the order of $10^{-6}$~mbar, with a sticking coefficient $\alpha=1$ and without any competitive desorption process, a time constant for the adsorption on the photocathode can be estimated as:
+\begin{equation}
+\tau=\frac{1}{\alpha\nu s}\approx 1~\mbox{s}
+\end{equation}
+where $\nu$ is the collision rate per unit of time and surface, and $s$ the typical surface of an adsorption site. When derived from the Maxwell-Boltzmann distribution, $\nu$ can be expressed as $\nu=\frac{P}{\sqrt{2\pi m k_B T}}$, with $P$ being the pressure, $m$ the mass of a gas molecule and $T$ the temperature. $s$ is considered to be $\left(\frac{M}{\mathcal{N}_A \rho}\right)^{\frac{2}{3}}$, with $M$ and $\rho$ being the molar mass and the density of the metal constituting the photocathode (it is this same evaluation that was used in the previous section for the conversion between cross-sections and transition probabilities).
+
+The time resolution of our curves (2~s) might be too small to exhibit such re-adsorption; except when the pressure is lower, as is the case for the QE scans of the repolished AlLi photocathode ($P<9.3\times10^{-7}$~mbar). The quick rise, visible in the 10 to 12 seconds following the end of the prior XANES scans (see fig. \ref{QE_AlLiNP}), is imputed to this re-adsorption.
+
+\subsubsection*{Recomposition of the coverage}
+The desorption episode that alledgedly occurs during the XANES scans only partially relieves the surface of the photocathode from its adsorbates, the x-ray irradiation lasting no more than a few minutes. A certain quantity of remaining spectator adsorbates therefore limits the recoverage expected to take place in the beginning of the QE scans. A longer x-ray irradiation could photodesorbe a larger proportion of these spectator adsorbates, thus leading to a recomposed recoverage more favorable to the QE. This explanation can account for the high QE level of the re-investigated repolished Al photocathode, that was preceded by a thirty-minute long x-ray irradiation.
+
+\subsection{Induced chemical changes}
+
+Should indeed adsorption induce chemical changes in the environment of the Al atoms, changes that are responsible for the QE variations and reversible under the influence of UV radiation, the nature of these changes nonetheless remains so far unclear. Although its precise identification is beyond the scope of this paper, two possible answers are discussed in this section.
+
+\subsubsection*{CO$_2$ adsorption}
+Several studies suggest that the main effect of UV radiation on aluminium oxide surfaces is the photodesorption of CO$_2$. \ref{}, for instance, measure a photodesorption probability (per incoming photon) of $5\times10^{-5}$ for CO$_2$, which is the only specie to desorb under a []~nm beam. \ref{}, for their part, observe a two-rate photodesorption of CO$_2$ from nickel oxide under a []~nm beam, with cross-sections of [] and []~cm$^2$ corresponding to CO$_2$ molecules adsorbed on two sorts of sites, differing by their oxidation state. 
+The adsorption mecanism is described\ref{} as the dissociation of CO$_2$ into a CO molecule physisorbed on the surface, and an oxygen atom which associates with aluminium atoms to form amorphous aluminium oxide. The desorption is alleged\ref{} to result from the photodissociation of a neighbouring adsorbed O$_2$ molecule, with one free oxygen atom rejoining the adsorbed CO and enabling CO$_2$ to desorbe. 
+If the measured values compare well with those obtained section [], and if CO$_2$ adsorption may engender a substantial chemical change in the aluminium surface, its desorption, however, does not allow for the reverse change. Should this hypothesis of CO$_2$ adsorption and desorption prove valid, it would still need to be completed.
+
+\subsubsection*{Water adsorption}
+An analysis of the XANES spectra might provide a second hypothesis. We have seen that, for the Al and AlLi photocathodes, the height of the second peak of the XANES shows gradual variations from one scan to another. Attempts were made to reproduce these variations by linear combination of aluminium, aluminium oxide\ref{} and aluminium hydroxide\ref{} reference spectra (see fig. []). Even though those reference spectra were not acquired in the same conditions as ours, it appears that the observed evolution in XANES could be modeled by a gradual reduction of the proportion of hydroxide at the surface of the photocathode. The presence of aluminium hydroxide might be plausible in our experiment, performed in a water dominated vacuum, and could explain our observations: this compound is known to be unstable at low pressure\ref{}, and therefore potentially prone to dissociate under UV irradiation. 
+
+As do the corresponding QE scans, the XANES spectra for the repolished AlLi photocathode strongly differ from the other Al and AlLi spectra, presenting emphasized first peak (A) and pre-edge peak (C). The latter can be assigned to the 1s-3p transition of the aluminium atom: it is the very first dipolar transition allowed, measured here by the ensuing Auger decay. The valence structure of the aluminium atom being [Ne]3s$^2$3p$^1$, the 1s-3p transition is all the more probable as the oxidation state of the aluminium in the photocathode is high and the 3p level empty. For its part, the predominance of the first peak (A) with respect to the as-received photocathode could be explained by a higher proportion of aluminium oxide in the repolished photocathode, as suggested by the reference spectra shown fig. []. If valid, this interpretation would suggest that the surface of this precise photocathode was covered more by an amorphous layer of oxide rather than by hydroxide. The oxide being known to be over-proportioned in oxygen atoms during its formation\ref{} compared to the hydroxide, the enhanced pre-edge could thus be accounted for. Such a situation can be explained by what distinguishes the scans performed on the repolished AlLi photocathode from all other set of scans: the lower pressure may have hampered the formation of hydroxide, allowing an emphasized oxide coverage. 
+[A further understanding of the features present on fig \ref{QE_AlLiNP} is nevertheless still to be developed.] 
+
+\subsection{Photocurrent at the nickel foil}
+
+\section{Conclusion}
+
+% If in two-column mode, this environment will change to single-column format so that long equations can be displayed. 
+% Use only when necessary.
+%\begin{widetext}
+%$$\mbox{put long equation here}$$
+%\end{widetext}
+
+% Figures should be put into the text as floats. 
+% Use the graphics or graphicx packages (distributed with LaTeX2e).
+% See the LaTeX Graphics Companion by Michel Goosens, Sebastian Rahtz, and Frank Mittelbach for examples. 
+%
+% Here is an example of the general form of a figure:
+% Fill in the caption in the braces of the \caption{} command. 
+% Put the label that you will use with \ref{} command in the braces of the \label{} command.
+%
+% \begin{figure}
+% \includegraphics{}%
+% \caption{\label{}}%
+% \end{figure}
+
+% Tables may be be put in the text as floats.
+% Here is an example of the general form of a table:
+% Fill in the caption in the braces of the \caption{} command. Put the label
+% that you will use with \ref{} command in the braces of the \label{} command.
+% Insert the column specifiers (l, r, c, d, etc.) in the empty braces of the
+% \begin{tabular}{} command.
+%
+% \begin{table}
+% \caption{\label{} }
+% \begin{tabular}{}
+% \end{tabular}
+% \end{table}
+
+% If you have acknowledgments, this puts in the proper section head.
+%\begin{acknowledgments}
+% Put your acknowledgments here.
+%\end{acknowledgments}
+
+% Create the reference section using BibTeX:
+\bibliography{flp_PSI}
+
+\end{document}
+%
+% ****** End of file aiptemplate.tex ******
