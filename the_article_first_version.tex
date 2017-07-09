@@ -1,0 +1,136 @@
+%% ****** Start of file aiptemplate.tex ****** %
+%%
+%%   This file is part of the files in the distribution of AIP substyles for REVTeX4.
+%%   Version 4.1 of 9 October 2009.
+%%
+%
+% This is a template for producing documents for use with 
+% the REVTEX 4.1 document class and the AIP substyles.
+% 
+% Copy this file to another name and then work on that file.
+% That way, you always have this original template file to use.
+
+\documentclass[aip,graphicx]{revtex4-1}
+%\documentclass[aip,reprint]{revtex4-1}
+
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{siunitx}
+%\usepackage[pdftex]{graphicx}
+%\usepackage{babel}
+%\usepackage{multicol}
+%\usepackage[centerlast]{caption2}
+\usepackage{setspace}
+\usepackage{multirow}
+\usepackage{epstopdf}
+
+%\draft % marks overfull lines with a black rule on the right
+
+%\newcommand{\registered}{\circledR}
+
+%\journalname{JVSTA or Applied Physics A}
+
+\begin{document}
+
+% Use the \preprint command to place your local institutional report number 
+% on the title page in preprint mode.
+% Multiple \preprint commands are allowed.
+%\preprint{}
+
+\title{Summary of our article, overview of the organization of its content}
+%\title{Ageing from technical metal photocathodes under UV laser irradiation: a chemistry investigation} %Title of paper
+
+% repeat the \author .. \affiliation  etc. as needed
+% \email, \thanks, \homepage, \altaffiliation all apply to the current author.
+% Explanatory text should go in the []'s, 
+% actual e-mail address or url should go in the {}'s for \email and \homepage.
+% Please use the appropriate macro for the type of information
+
+% \affiliation command applies to all authors since the last \affiliation command. 
+% The \affiliation command should follow the other information.
+
+\author{S. Thomas}
+\affiliation{Laboratoire Kastler Brossel, UPMC-Sorbonne Universit\'es, CNRS, ENS-PSL Research University, Coll\`ege de France, 4 Place Jussieu, 75005 Paris, France}
+\author{C. J. Milne}
+\affiliation{Paul Scherrer Institute, 5323 Villigen, Switzerland}
+\author{T. Huthwelker}
+\affiliation{\'Ecole Polytechnique F\'ed\'erale de Lausanne, 1015 Lausanne, Switzerland}
+\author{F. Ardana-Lamas}
+\affiliation{Paul Scherrer Institute, 5323 Villigen, Switzerland}
+\affiliation{\'Ecole Polytechnique F\'ed\'erale de Lausanne, 1015 Lausanne, Switzerland}
+\author{C. Vicario}
+\affiliation{Paul Scherrer Institute, 5323 Villigen, Switzerland}
+\author{C. P. Hauri}
+\affiliation{Paul Scherrer Institute, 5323 Villigen, Switzerland}
+\affiliation{\'Ecole Polytechnique F\'ed\'erale de Lausanne, 1015 Lausanne, Switzerland}
+\author{C. Bressler}
+\author{F. Le Pimpec}
+\affiliation{European XFEL GmbH 22761 Hamburg, Germany}
+\email[Corresponding author: ]{frederic.le.pimpec@xfel.eu}
+
+% Collaboration name, if desired (requires use of superscriptaddress option in \documentclass). 
+% \noaffiliation is required (may also be used with the \author command).
+%\collaboration{}
+%\noaffiliation
+
+\date{\today}
+
+%\begin{abstract}
+%Hard and soft X-ray Free Electron Laser use, for almost all of them, a metal based photocathode (copper) or a semiconductor cathode (cesium telluride) as an electron source. One of the challenge is to operate the linear accelerator with a reliable cathode in order to ensure the maximum uptime for users. Those cathodes should deliver a low emittance beam and have a high quantum efficiency (QE) to reduce the energy requirement of the RF photoelectron gun laser. With usage in the RF gun the QE performances of the cathodes degrades and one need to rejuvenate them or replace them. We have tried to understand the chemistry evolution of various photocathodes such as Aluminium, Magnesium and Aluminium-Lithium either polished and stored and freshly polished using XANES techniques. The results of the UV laser irradiation over time and its chemistry correlation are presented.
+%\end{abstract}
+
+\begin{abstract}
+The degradation over time of the quantum efficiency of an aluminium-made photocathod is studied through XANES spectroscopy; a photoinduced gas desorption mechanism is found to be responsible for the observed variations.
+\end{abstract}
+
+\pacs{85.60.Ha, 79.60.-i, 61.05.cj, 29.27.-a}% insert suggested PACS numbers in braces on next line
+
+\maketitle %\maketitle must follow title, authors, abstract and \pacs
+
+This document presents the new clarified structure of the article. The content is the same as in the $0^{th}$ version of september 2015, it as only been reorganized and simplified. By focusing on the Al cathod, we avoid those confusing back and forth explanations between the different photocathod materials… which would be all the more useless as only the Al case is actually conclusive. Also, I don't mention the use of the nickel foil (that originally measures the intensity of the incident X-Ray beam for normalization) as a second photoelectron detector, since this particular use doesn't appear to be reliable.
+
+%In order to be as clear as possible, the main story can now be told as follows. 
+
+\section{Introduction}
+
+\section{Experimental setup}
+
+\subsection{Photocathod}
+Description of the Al cathod, the different treatments applied to it, and the vacuum chamber in which it is placed.
+
+\subsection{Quantum Efficiency measurement}
+Definition of the QE, description of the laser source and the detection apparatus.
+
+\subsection{XANES investigation}
+Presentation of the X-Ray source, of the specific edge of Al investigated, and of the detection apparatus.
+A table summarizes here the different conditions in which sets of scans were recorded for the Al photocathod.
+
+\section{Results}
+\subsection{Evolution in the Quantum Efficiency}
+Exponential decrease of the QE throughout both a scan and a set of scan [\textit{figure}].
+\subsection{Evolution in the XANES spectra}
+Normalization process, evolution of the second peak of the spectra [\textit{figure}], correlation with the QE [\textit{figure}]. 
+\subsection{Residual gas analysis}
+Pollution of the vacuum chamber…
+
+\section{Discussion}
+
+\subsection{Influence of UV irradiation}
+Double exponential decay over each scan, correlation of fitted cross-sections with the laser power [\textit{figure}], scenario of photoinduced desorption.
+
+\subsection{Influence of the pressure}
+Correlation between the QE and the pressure [\textit{figure}], assumed mechanism of readsorption following the XANES measurements.
+
+\subsection{Comparison with different experimental conditions}
+Other tests conducted with different scan durations and time spacings; with a different surface conditioning (raw, before repolishing); with a different material (AlLi); in the presence or not of a photoemission-stimulating electric field. Each time, the UV power and the pressure dependancies were clearly confirmed [\textit{small format figures}] (even though all those parameters were not always varied independantly).
+
+Mg was tested, but its QE wasn't steadily measurable.
+
+\subsection{Possible chemical processes}
+Hypothesis of CO2 adsorption, and of H2O adsorption; comparison with related works.
+
+\section{Conclusion}
+
+\end{document}
+%
+% ****** End of file aiptemplate.tex ******
