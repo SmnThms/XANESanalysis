@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 """
 Created on Tue Jan 24 22:35:38 2017
-
 @author: Simon
 """
 
@@ -41,7 +40,7 @@ class Scan:
         self.photocurrent -= np.polyval(np.polyfit(self.energy[:N],self.photocurrent[:N],1),self.energy)
         
         
-class Set_of:
+class Set:
     def __init__(self,name_of_scan,type_of_scan):
         nb = {'Al':6,'Alrp':9}
         self.name = name_of_scan
@@ -56,10 +55,14 @@ class Set_of:
             diff = [np.sum(abs(coef*scan.photocurrent - self.scans[reference].photocurrent)) for coef in coefs]
             scan.photocurrent *= coefs[np.argmin(diff)]
         
-        
+def cmap(nb_plots):
+    colormap = plt.cm.jet
+    plt.gca().set_color_cycle([colormap(i) for i in np.linspace(0, 0.9, nb_plots)])
+
 def plot_XANES(set_of_scans, format_of_figure):
     figure = plt.figure(1)
     if format_of_figure is 'big':
+        cmap(len(set_of_scans.scans))
         for scan in set_of_scans.scans:
             inf = np.argmin(abs(scan.energy - 1550))
             plt.plot(scan.energy[inf:],scan.photocurrent[inf:])
@@ -102,5 +105,5 @@ def plot_QE(set_of_scans,format_of_figure):
 ##
 ##def plot_fit():
 
-S = Set_of('Al','XANES')
+S = Set('Al','XANES')
 plot_XANES(S,'big')
