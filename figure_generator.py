@@ -75,7 +75,9 @@ def plot_XANES(set_of_scans, format_of_figure):
 #            plt.tick_params(axis='y',)
             plt.gca().get_yaxis().set_ticks([])
             plt.xlim(1551,1600)
-            plt.ylim(-2E-4,25E-4)
+#            plt.ylim(-2E-4,25E-4)
+            plt.xlabel('Energy (eV)')
+            plt.ylabel('Photocurrent (arb. units)')
 #            plt.savefig('.\\Figures\\' + set_of_scans.name + '_XANES.jpg')
     elif format_of_figure is 'small':
 #        selection = {'Al':(0,1,2,3,4,5)}
