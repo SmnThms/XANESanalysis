@@ -35,14 +35,16 @@ class Scan:
         return 0
         
     def normalize(self):
-        self.photocurrent *= 1/self.topup
+        self.photocurrent /= self.topup
         N = 10
         self.photocurrent -= np.polyval(np.polyfit(self.energy[:N],self.photocurrent[:N],1),self.energy)
+        
+    def arg(self,value):
+        return np.argmin(abs(self.energy-value))
         
         
 class Set:
     def __init__(self,name_of_scan,type_of_scan):
-        nb = {'Al':6,'Alrp':9}
         self.name = name_of_scan
         self.length = nb[name_of_scan]
         self.scans = [Scan(name_of_scan,type_of_scan,number_of_scan) for number_of_scan in range(self.length)]
@@ -51,8 +53,12 @@ class Set:
         
     def scaling(self):
         for scan in self.scans:
-            reference, coefs = 0, np.arange(10000)*2/10000
-            diff = [np.sum(abs(coef*scan.photocurrent - self.scans[reference].photocurrent)) for coef in coefs]
+            reference = ref_scan[self.name]
+            coefs = np.arange(10000)*2/10000
+            limit1, limit2, limit3 = 1566, 1574, 1587
+            diff = [np.sum(abs(coef*scan.photocurrent[:scan.arg(limit1)] - self.scans[reference].photocurrent[:scan.arg(limit1)])) \
+                    + np.sum(abs(coef*scan.photocurrent[scan.arg(limit2):scan.arg(limit3)] - self.scans[reference].photocurrent[scan.arg(limit2):scan.arg(limit3)])) \
+                    for coef in coefs]
             scan.photocurrent *= coefs[np.argmin(diff)]
         
 def cmap(nb_plots):
@@ -96,6 +102,11 @@ def plot_QE(set_of_scans,format_of_figure):
         for scan in set_of_scans.scans:
             plt.plot(scan.time,scan.QE)
             plt.set_cmap('jet')
+            
+nb = {'Al':6,'Alrp':9}
+ref_scan = {'Al':4,'Alrp':4}
+nonscaled_zone = {'Al':(0,)}
+
 
 ##def plot_correlation_QE_XANES_P():
 ##    
@@ -105,5 +116,6 @@ def plot_QE(set_of_scans,format_of_figure):
 ##
 ##def plot_fit():
 
+plt.close('all')
 S = Set('Al','XANES')
 plot_XANES(S,'big')
