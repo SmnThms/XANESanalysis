@@ -9,6 +9,7 @@ import numpy as np
 from matplotlib import pyplot as plt
 from matplotlib import colorbar as clb
 from matplotlib.patches import Rectangle
+from matplotlib.ticker import FormatStrFormatter
 from scipy.interpolate import interp1d
 
 class Scan:
@@ -22,9 +23,9 @@ class Scan:
             data = np.loadtxt(file_address)
             if type_of_scan is 'QE':
                 self.time = data[:,0] - data[0,0]
-                self.QE = data[:,1]
                 self.pressure = data[:,2]
                 self.laser_power = data[:,3]
+                self.QE = data[:,1]/self.laser_power
             elif type_of_scan is 'XANES':
                 self.energy = data[:,0]
                 self.topup = data[:,2]
@@ -37,7 +38,8 @@ class Scan:
         self.photocurrent /= self.topup
         N = 10
         self.photocurrent -= np.polyval(np.polyfit(self.energy[:N],
-                             self.photocurrent[:N],1),self.energy)        
+                             self.photocurrent[:N],1),self.energy)  
+        self.photocurrent /= self.photocurrent[self.arg(1585)]
     def arg(self,value):
         return np.argmin(abs(self.energy-value))
         
@@ -93,52 +95,112 @@ def plot(set_of_scans, type_of_scan, fig=1, cmap='jet_r'):
     print 'Figure',fig,':',set_of_scans.name,type_of_scan
     return
 
+def plotall(type_of_scan,cmap='jet_r'):
+    fig = plt.figure(figsize=(5,8))
+    colormap = getattr(plt.cm,cmap)
+    sets_of_scans = [Set('Alrp'),Set('Al'),Set('AlLirp'),Set('AlLi')]
+    for n,set_of_scans in enumerate(sets_of_scans):
+        plt.gca().set_color_cycle([colormap(i) \
+            for i in np.linspace(0,1,set_of_scans.length)])
+        for scan in set_of_scans.scans:
+            if type_of_scan is 'XANES':
+                inf = scan.arg(1550)
+                plt.plot(scan.energy[inf:],scan.photocurrent[inf:]+n*0.5)
+            elif type_of_scan is 'QE':
+                inf = 1
+                plt.plot(scan.time[inf:],scan.QE[inf:]+n*0.1,'.')
+    if type_of_scan is 'XANES':
+        plt.xlim(1551,1600)
+        plt.xlabel('Energy (eV)',fontsize=14)
+        plt.ylabel('Photocurrent (arb. units)',fontsize=14)
+    elif type_of_scan is 'QE':
+        plt.xlabel('Time (s)',fontsize=14)
+        plt.ylabel('QE (arb. units)',fontsize=14)
+    plt.xticks(fontsize=11)
+    plt.gca().get_yaxis().set_ticks([])
+    print 'Figure',fig.number,': all',type_of_scan
+    return
+
 def correlation_pressure():
-    fig, ax1 = plt.subplots()
-    ax2 = ax1.twinx()
-    k=0
-    #    for set_of_scan in sets_of_scans
-    pressure_init, pressure_final, QE_init, QE_final, peakheight, norm_peakheight, dipheight, norm_dipheight, scan_nb = [],[],[],[],[],[],[],[],[]
-    for set_of_scans in [Set('Alrp')]:
-        for scan in set_of_scans.scans:   
-            pressure_init.append(scan.pressure[1])
-            pressure_final.append(scan.pressure[-1])
-            QE_init.append(scan.QE[1])
-            QE_final.append(scan.QE[-1])
-            inf1, sup1  = scan.arg(1565),scan.arg(1568)
-            first_peak  = interp1d(np.arange(sup1-inf1),
-                          scan.photocurrent[inf1:sup1], kind='cubic')
-            inf2, sup2  = scan.arg(1568),scan.arg(1571)
-            dip         = interp1d(np.arange(sup2-inf2),
-                          scan.photocurrent[inf2:sup2], kind='cubic')
-            inf3, sup3  = scan.arg(1570),scan.arg(1572)
-            second_peak = interp1d(np.arange(sup3-inf3),
-                          scan.photocurrent[inf3:sup3], kind='cubic')
-            peakheight.append(np.max(second_peak(np.arange(sup3-inf3))))
-            norm_peakheight.append(np.max(second_peak(np.arange(sup3-inf3))) \
-                                   /np.max(first_peak(np.arange(sup1-inf1))))
-            dipheight.append(np.max(dip(np.arange(sup2-inf2))))
-            norm_dipheight.append(np.max(dip(np.arange(sup2-inf2))) \
-                                   /np.max(first_peak(np.arange(sup1-inf1))))
-            scan_nb.append(k)
-            k+=1
-        ax1.plot(scan_nb,norm_dipheight,'o')
-        ax2.plot(scan_nb,dipheight,'.')
-    ax1.set_xlabel('Pressure (mbar)')
-    ax1.set_ylabel('QE (arb. units)')
+    fig, (ax1, ax2) = plt.subplots(1,2,figsize=(11,6))
+    print 'Figure',plt.gcf().number,': Pressure correlation'
+    pressure,QE,XANESheight = [],[],[]
+    point = {'Alrp':'+','Al':'*','AlLi':'x','AlLirp':'^'}
+    for set_of_scans in [Set('AlLi')]:
+        for scan in set_of_scans.scans:  
+            pressure.append(scan.pressure[-1]*1e6)
+            QE.append(scan.QE[-1])
+            XANESheight.append(scan.photocurrent[scan.arg(1570)])
+#            pressure_init.append(scan.pressure[1])
+#            pressure_final.append(scan.pressure[-1])
+#            QE_init.append(scan.QE[1])
+#            QE_final.append(scan.QE[-1])
+#            inf1, sup1  = scan.arg(1564),scan.arg(1568)
+#            first_peak  = interp1d(np.linspace(0,1,sup1-inf1),
+#                          scan.photocurrent[inf1:sup1], kind='cubic')
+#            inf2, sup2  = scan.arg(1567),scan.arg(1571)
+#            dip         = interp1d(np.linspace(0,1,sup2-inf2),
+#                          scan.photocurrent[inf2:sup2], kind='cubic')
+#            inf3, sup3  = scan.arg(1568),scan.arg(1574)
+#            second_peak = interp1d(np.linspace(0,1,sup3-inf3),
+#                          scan.photocurrent[inf3:sup3], kind='cubic')
+#            peakheight.append(np.max(second_peak(np.linspace(0,1))))
+##            norm_peakheight.append(np.max(scan.photocurrent[inf3:sup3]))
+#            norm_peakheight.append(np.max(second_peak(np.linspace(0,1))) \
+#                                   /np.max(first_peak(np.linspace(0,1))))
+#            dipheight.append(np.min(dip(np.linspace(0,1))))
+##            norm_dipheight.append(np.min(scan.photocurrent[inf2:sup2]))
+#            norm_dipheight.append(np.min(dip(np.linspace(0,1)) \
+#                                   /np.max(first_peak(np.linspace(0,1)))))
+#            interm.append(scan.photocurrent[scan.arg(1570)])
+#    plt.figure(1)
+#    plt.plot(pressure_final,QE_final,'o')
+#    print np.corrcoef(pressure_final,QE_final)[1,0]
+##    print np.corrcoef(np.concatenate((pressure_final,QE_final)))
+#    plt.figure(2)
+#    plt.plot(pressure_final,peakheight,'o')
+#    print np.corrcoef(pressure_final,peakheight)[1,0]    
+#    plt.figure(3)
+#    plt.plot(pressure_final,norm_peakheight,'o')
+#    print np.corrcoef(pressure_final,norm_peakheight)[1,0]
+#    plt.figure(4)
+#    plt.plot(pressure_final,dipheight,'o')
+#    print np.corrcoef(pressure_final,dipheight)[1,0]
+#    plt.figure(5)
+#    plt.plot(pressure_final,norm_dipheight,'o')
+#    print np.corrcoef(pressure_final,norm_dipheight)[1,0]
+#    plt.figure(6)
+#    plt.plot(pressure_final,interm,'o')
+#    print np.corrcoef(pressure_final,interm)[1,0]
+        ax1.plot(pressure,QE,point[set_of_scans.name],color='k')
+        print set_of_scans.name,'QE : r^2 =',np.corrcoef(pressure,QE)[1,0]
+        ax2.plot(pressure,XANESheight,point[set_of_scans.name],color='k')
+        print set_of_scans.name,'XANES : r^2 =',np.corrcoef(pressure,XANESheight)[1,0]
+#    ax1.set_xlabel('Pressure (x$10^{-6}$ mbar)',fontsize=14)
+#    ax1.xaxis.set_major_formatter(FormatStrFormatter('%.1f'))
+    ax1.plot(pressure,np.polyval(np.polyfit(pressure,QE,1),pressure),'midnightblue',alpha=0.4)
+    ax2.plot(pressure,np.polyval(np.polyfit(pressure,XANESheight,1),pressure),'midnightblue',alpha=0.4)
+    ax1.set_xlabel('Pressure (x$10^{-6}$ mbar)',fontsize=14)
+    ax1.set_ylabel('QE (at the end of a scan)',fontsize=14)
+#    ax1.set_title('QE (at the end of a scan)',fontsize=14)
     ax1.get_yaxis().set_ticks([])
-    ax2.set_ylabel('XANES 2nd peak height')
-    fig.tight_layout()
-    plt.show()
+    ax2.set_xlabel('Pressure (x$10^{-6}$ mbar)',fontsize=14)
+    ax2.set_ylabel('XANES spectra (height of the first dip)',fontsize=14)
+#    ax2.set_title('XANES spectra (height of the first dip)',fontsize=14)
+#    ax2.get_yaxis().set_ticks([])
+    ax2.yaxis.set_label_position("left")
+    ax2.yaxis.set_ticks_position("right")
+#    plt.savefig('.\\Figures\\'+'_PressureCorrelation'+'.jpg')
     return
 
 #def correlation_laser():
             
 #nb = {'Al':6,'Alrp':9}
-scan_range = {'Alrp':np.arange(0,9)}
-ref_scan = {'Al':4,'Alrp':4}
+scan_range = {'Alrp':np.arange(0,9),'Al':[2,3,4,5,6],'AlLirp':[1,2,3,4,5,6],'AlLi':[1,2,3,4,5,6,7,8,9]}
+ref_scan = {'Al':2,'Alrp':4,'AlLirp':4,'AlLi':2}
 
 plt.close('all')
-plot(Set('Alrp'),'XANES')
-plot(Set('Alrp'),'QE',fig=2,cmap='bone_r')
-#correlation_pressure()
+plotall('XANES')
+#plot(Set('Alrp'),'XANES',fig=8)
+#plot(Set('Alrp'),'QE',fig=2,cmap='bone_r')
+correlation_pressure()
